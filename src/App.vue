@@ -15,10 +15,7 @@
               @click="setGB(GreatBuilding.key)") {{ GreatBuilding.name }}
       .col.sm: .gbs--input.cnt
         label Уровень 
-        // {{level}}-{{1+Number(level)}}
         input(type="number", v-model="level" min='0' :max="$store.state.gbsLevels[currentGB].levels.length -1")
-    .gbs--total
-      span total: {{priceGB.cost}}
     .gbs--funded
       .progress: div(:style="{ width: (totalFunded / priceGB.cost * 100).toFixed(2) + '%' }")
       .info
