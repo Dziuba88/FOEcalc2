@@ -1,0 +1,113 @@
+.selectbox {
+  position: relative;
+  display: block;
+  text-align: left;
+
+  &--toggle {
+    position: relative;
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    line-height: 1;
+    padding: 10px 30px 8px 10px;
+    transition: 0.15s ease-in-out;
+    text-transform: uppercase;
+    background-color: rgba($blk, 0.35);
+    border: 2px solid rgba($blk, 0.35);
+    border-radius: 5px;
+    color: $lht;
+
+    &:before {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      display: block;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 5px 0 5px;
+      border-color: rgba($lht, 0.5) transparent transparent transparent;
+      transform: rotate(0);
+      transition: 0.15s ease-in-out;
+    }
+
+    &__content {
+      span {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .label {
+        font-size: 8px;
+        font-weight: 700;
+        color: $orn;
+      }
+      .value {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &.open &--toggle:before {
+    transform: rotate(180deg);
+  }
+
+  &--menu {
+    position: absolute;
+    min-width: 100%;
+    z-index: 99;
+    box-shadow: 0 1px 3px rgba($blk, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: scaleY(0);
+    transition: 0.15s ease-in-out;
+    transform-origin: top center;
+    background-color: rgba($wht, 0.95);
+    backdrop-filter: blur(5px);
+    border-radius: 2px;
+    border: 2px solid $wht;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    ul {
+      padding: 5px 0;
+      margin: 0;
+      list-style: none;
+      font-size: 12px;
+      line-height: 20px;
+
+      li {
+        display: block;
+        margin: 0 0 1px;
+        padding: 10px;
+        color: $blk;
+        border-bottom: 1px solid rgba($blk, 0.15);
+        user-select: none;
+        transition: 0.15s ease-in-out;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+          background-color: rgba($blk, 0.75);
+          color: rgba($wht, 0.75);
+        }
+      }
+    }
+  }
+
+  &.open &--menu {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+    top: 100%;
+    margin-top: 5px;
+  }
+}
