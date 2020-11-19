@@ -251,6 +251,9 @@ export default {
     },
   },
   watch: {
+    ratio: function (val) {
+      this.calcRatedValue(this.priceGB.reward)
+    },
     level: function (val) {
       this.calcRatedValue(this.priceGB.reward)
     },
