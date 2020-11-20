@@ -187,30 +187,55 @@ export default {
       return `assets/gbs_images/${this.currentGB}.png`
     },
     guaranteeStatus_1: function () {
+      if (this.position_1.status) {
+        return this.priceGB.cost - this.totalFunded > this.position_1.value
+          ? false
+          : true
+      }
       return this.priceGB.cost - this.totalFunded - this.position_1.value >
         this.position_1.value
         ? false
         : true
     },
     guaranteeStatus_2: function () {
+      if (this.position_2.status) {
+        return this.priceGB.cost - this.totalFunded > this.position_2.value
+          ? false
+          : true
+      }
       return this.priceGB.cost - this.totalFunded - this.position_2.value >
         this.position_2.value
         ? false
         : true
     },
     guaranteeStatus_3: function () {
+      if (this.position_3.status) {
+        return this.priceGB.cost - this.totalFunded > this.position_3.value
+          ? false
+          : true
+      }
       return this.priceGB.cost - this.totalFunded - this.position_3.value >
         this.position_3.value
         ? false
         : true
     },
     guaranteeStatus_4: function () {
+      if (this.position_4.status) {
+        return this.priceGB.cost - this.totalFunded > this.position_4.value
+          ? false
+          : true
+      }
       return this.priceGB.cost - this.totalFunded - this.position_4.value >
         this.position_4.value
         ? false
         : true
     },
     guaranteeStatus_5: function () {
+      if (this.position_5.status) {
+        return this.priceGB.cost - this.totalFunded > this.position_5.value
+          ? false
+          : true
+      }
       return this.priceGB.cost - this.totalFunded - this.position_5.value >
         this.position_5.value
         ? false
