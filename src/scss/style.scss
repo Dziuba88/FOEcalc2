@@ -7,7 +7,9 @@ $red: #c0392b !default;
 $grn: #2bc032 !default;
 @import './normalize';
 @import './dropdown';
-
+:root {
+  font-size: 14px;
+}
 * {
   outline: 0;
   box-sizing: border-box;
@@ -29,7 +31,7 @@ body {
 .gbs {
   width: 600px;
   max-width: 95%;
-  margin: 140px auto 40px;
+  margin: 90px auto 10px;
   background: url(./assets/wood.jpg) center center;
   border-radius: 10px;
   padding: 5px;
@@ -46,8 +48,10 @@ body {
   }
   &--preview {
     display: block;
-    margin: -140px auto 5px;
-    width: 220px;
+    margin: -90px auto 5px;
+    width: 180px;
+    position: relative;
+    z-index: 2;
   }
   &--input {
     position: relative;
@@ -110,7 +114,7 @@ body {
     margin-bottom: 20px;
   }
   &--invest {
-    padding: 10px 10px 0;
+    padding: 5px 10px 0;
     .row {
       align-items: center;
       padding-bottom: 5px;
@@ -186,6 +190,7 @@ body {
   }
   &--owner {
     padding-top: 10px;
+    margin-bottom: 5px;
 
     .row {
       margin: 0 -5px;
@@ -233,8 +238,10 @@ body {
     .info {
       display: flex;
       align-items: flex-end;
+      justify-content: space-between;
       margin-top: -22px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      position: relative;
 
       &--left,
       &--right {
@@ -270,36 +277,45 @@ body {
       }
 
       &--center {
-        position: relative;
-        flex: 1;
+        position: absolute;
+        top: 100%;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        margin-top: -10px;
 
-        .total {
-          position: absolute;
+        div {
+          flex: none;
+          width: 100%;
+          text-align: center;
+        }
+        small,
+        span {
+          display: block;
+          white-space: nowrap;
+        }
+        small {
+          font-size: 8px;
+          font-weight: 700;
+          color: $orn;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+        span {
+          font-size: 18px;
+          font-weight: 900;
+          line-height: 1.2;
+        }
+
+        /*.total {
+          //position: absolute;
           user-select: none;
           width: 220px;
           margin-top: -14px;
           left: 50%;
           margin-left: -110px;
           text-align: center;
-
-          small,
-          span {
-            display: block;
-            white-space: nowrap;
-          }
-          small {
-            font-size: 8px;
-            font-weight: 700;
-            color: $orn;
-            line-height: 1;
-            text-transform: uppercase;
-          }
-          span {
-            font-size: 18px;
-            font-weight: 900;
-            line-height: 1.2;
-          }
-        }
+        }*/
       }
     }
   }
@@ -312,6 +328,54 @@ body {
     color: $blk;
     text-shadow: 1px 1px 0 rgba($lht, 0.25);
     letter-spacing: 0.05em;
+  }
+  &--infos {
+    padding-top: 5px;
+    border: 1px solid rgba($blk, 0.5);
+    padding-bottom: 5px;
+    background-color: rgba($lht, 0.15);
+    border-radius: 4px;
+
+    h5 {
+      margin: 0 0 5px;
+      padding: 0 0 5px;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: $lht;
+      text-shadow: 1px 1px 1px rgba($blk, 0.15);
+      border-bottom: 1px solid #000;
+      box-shadow: 0 1px 0 rgba($lht, 0.15);
+    }
+    .row {
+      margin: 0 -5px;
+    }
+    .col {
+      width: 20%;
+      flex: none;
+      text-align: center;
+      border-right: 1px solid #000;
+      box-shadow: 1px 0 0 rgba($lht, 0.15);
+      padding: 0 5px;
+      &:last-child {
+        box-shadow: none;
+        border-right: 0;
+      }
+    }
+    small,
+    span {
+      display: block;
+      white-space: nowrap;
+    }
+    small {
+      font-size: 12px;
+      font-weight: 700;
+      color: $orn;
+      line-height: 1;
+    }
+    span {
+      font-size: 16px;
+      line-height: 1.2;
+    }
   }
 }
 

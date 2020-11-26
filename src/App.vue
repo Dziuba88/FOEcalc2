@@ -22,9 +22,10 @@
         .info--left
           img(src="./assets/inf_l.png", alt="")
           span {{level}}
-        .info--center: .total
-          small стоимость уровня
-          span {{priceGB.cost}}
+        .info--center
+          .total
+            small стоимость уровня / нужно вложить
+            span {{priceGB.cost}} / {{totalNeeded}}
         .info--right
           img(src="./assets/inf_r.png", alt="")
           span {{Number(level)+1}}
@@ -42,7 +43,25 @@
       .col.sm: .gbs--input.cnt
         label Коеф.
         input(type="number", v-model="ratio" min='0' step="0.01")
-    
+    .gbs--infos
+      h5 Необходимо для гаранта
+      .row
+        .col
+          small #1 
+          span {{garants[0]}}
+        .col
+          small #2 
+          span {{garants[1]}}
+        .col
+          small #3
+          span {{garants[2]}}
+        .col
+          small #4
+          span {{garants[3]}}
+        .col
+          small #5
+          span {{garants[4]}}
+
     .gbs--invest
       .row
         .position #1
@@ -243,6 +262,61 @@ export default {
     },
     remainFund: function () {
       return this.priceGB.cost - this.totalFunded
+    },
+    totalNeeded: function () {
+      return (
+        this.priceGB.cost -
+        this.position_1.value -
+        this.position_2.value -
+        this.position_3.value -
+        this.position_4.value -
+        this.position_5.value
+      )
+    },
+    garants: function () {
+      let places = [0, 0, 0, 0, 0]
+      let place_1 = this.priceGB.cost - this.position_1.value * 2
+      let place_2 =
+        this.priceGB.cost - this.position_1.value - this.position_2.value * 2
+      let place_3 =
+        this.priceGB.cost -
+        this.position_1.value -
+        this.position_2.value -
+        this.position_3.value * 2
+      let place_4 =
+        this.priceGB.cost -
+        this.position_1.value -
+        this.position_2.value -
+        this.position_3.value -
+        this.position_4.value * 2
+      let place_5 =
+        this.priceGB.cost -
+        this.position_1.value -
+        this.position_2.value -
+        this.position_3.value -
+        this.position_4.value -
+        this.position_5.value * 2
+
+      place_1 > 0 ? (places[0] = place_1) : (places[0] = 0)
+      place_2 > 0 ? (places[1] = place_2) : (places[1] = 0)
+      place_3 > 0 ? (places[2] = place_3) : (places[2] = 0)
+      place_4 > 0 ? (places[3] = place_4) : (places[3] = 0)
+      place_5 > 0 ? (places[4] = place_5) : (places[4] = 0)
+
+      if (places[1] < places[0]) {
+        places[1] = places[0]
+      }
+      if (places[2] < places[1]) {
+        places[2] = places[1]
+      }
+      if (places[3] < places[2]) {
+        places[3] = places[2]
+      }
+      if (places[4] < places[3]) {
+        places[4] = places[3]
+      }
+
+      return places
     },
   },
   methods: {
